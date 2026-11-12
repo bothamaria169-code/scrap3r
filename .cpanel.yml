@@ -1,0 +1,9 @@
+---
+# cPanel Git deployment. The repository is cloned straight into the live
+# folder (document root = <repo>/public), so the code is already in place;
+# deploying only makes sure the writable folders exist with the right rights.
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/swiftfusionco/scrap3r.swiftfusion.co.za
+    - /bin/mkdir -p $DEPLOYPATH/storage/logs $DEPLOYPATH/storage/attachments $DEPLOYPATH/public/uploads
+    - /bin/chmod 755 $DEPLOYPATH/storage $DEPLOYPATH/storage/logs $DEPLOYPATH/storage/attachments $DEPLOYPATH/public/uploads
