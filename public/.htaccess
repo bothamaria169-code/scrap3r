@@ -1,0 +1,24 @@
+# This directory is the web root. Re-grant what the parent .htaccess denied.
+<IfModule mod_authz_core.c>
+    Require all granted
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Allow from all
+</IfModule>
+
+DirectoryIndex index.php
+
+# Don't inherit the project folder's rewrite rules. When public/ is the web
+# root, those rules are pointless here, and on hosts with symlinks disabled
+# (common on Plesk) merely inheriting them makes Apache refuse every request.
+<IfModule mod_rewrite.c>
+    RewriteEngine Off
+</IfModule>
+
+# Never serve dotfiles even from here.
+<FilesMatch "^\.">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>

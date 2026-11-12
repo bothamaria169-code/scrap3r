@@ -1,0 +1,14 @@
+# Secrets: create .env on the server (see DEPLOY_CPANEL.md). Never commit it.
+.env
+# Runtime data
+storage/*.sqlite
+storage/*.sqlite-*
+storage/logs/*
+!storage/logs/.keep
+storage/attachments/*
+!storage/attachments/.keep
+public/uploads/*
+!public/uploads/.keep
+output/
+__pycache__/
+*.zip
